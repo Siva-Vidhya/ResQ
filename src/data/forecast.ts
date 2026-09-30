@@ -1,0 +1,31 @@
+import type { HourlyForecast } from '../types';
+
+export const RIVER_DANGER_THRESHOLD_M = 5.0;
+
+export const initial24HourForecast: HourlyForecast[] = [
+  { hourOffset: 0,  hour: 'Now',  timeLabel: 'Now (15:00)',  rainfallMm: 58,  riverLevelMeters: 4.4, dangerThresholdMeters: 5.0, affectedPopulationK: 318, waterLevelIndex: 68, windSpeedKmh: 48, tideHeightMeters: 1.5, forecastRiskScore: 72 },
+  { hourOffset: 1,  hour: '+1h',  timeLabel: '+1h (16:00)',  rainfallMm: 74,  riverLevelMeters: 4.8, dangerThresholdMeters: 5.0, affectedPopulationK: 372, waterLevelIndex: 78, windSpeedKmh: 54, tideHeightMeters: 1.7, forecastRiskScore: 81 },
+  { hourOffset: 2,  hour: '+2h',  timeLabel: '+2h (17:00)',  rainfallMm: 88,  riverLevelMeters: 5.3, dangerThresholdMeters: 5.0, affectedPopulationK: 438, waterLevelIndex: 88, windSpeedKmh: 62, tideHeightMeters: 1.9, forecastRiskScore: 91 },
+  { hourOffset: 3,  hour: '+3h',  timeLabel: '+3h (18:00)',  rainfallMm: 98,  riverLevelMeters: 5.8, dangerThresholdMeters: 5.0, affectedPopulationK: 495, waterLevelIndex: 95, windSpeedKmh: 68, tideHeightMeters: 2.1, forecastRiskScore: 96 },
+  { hourOffset: 4,  hour: '+4h',  timeLabel: '+4h (19:00)',  rainfallMm: 92,  riverLevelMeters: 6.1, dangerThresholdMeters: 5.0, affectedPopulationK: 512, waterLevelIndex: 97, windSpeedKmh: 65, tideHeightMeters: 2.0, forecastRiskScore: 95 },
+  { hourOffset: 5,  hour: '+5h',  timeLabel: '+5h (20:00)',  rainfallMm: 78,  riverLevelMeters: 5.9, dangerThresholdMeters: 5.0, affectedPopulationK: 484, waterLevelIndex: 92, windSpeedKmh: 58, tideHeightMeters: 1.8, forecastRiskScore: 89 },
+  { hourOffset: 6,  hour: '+6h',  timeLabel: '+6h (21:00)',  rainfallMm: 64,  riverLevelMeters: 5.6, dangerThresholdMeters: 5.0, affectedPopulationK: 442, waterLevelIndex: 85, windSpeedKmh: 50, tideHeightMeters: 1.5, forecastRiskScore: 82 },
+  { hourOffset: 7,  hour: '+7h',  timeLabel: '+7h (22:00)',  rainfallMm: 50,  riverLevelMeters: 5.2, dangerThresholdMeters: 5.0, affectedPopulationK: 396, waterLevelIndex: 76, windSpeedKmh: 42, tideHeightMeters: 1.3, forecastRiskScore: 74 },
+  { hourOffset: 8,  hour: '+8h',  timeLabel: '+8h (23:00)',  rainfallMm: 39,  riverLevelMeters: 4.9, dangerThresholdMeters: 5.0, affectedPopulationK: 350, waterLevelIndex: 68, windSpeedKmh: 36, tideHeightMeters: 1.1, forecastRiskScore: 65 },
+  { hourOffset: 9,  hour: '+9h',  timeLabel: '+9h (00:00)',  rainfallMm: 30,  riverLevelMeters: 4.6, dangerThresholdMeters: 5.0, affectedPopulationK: 308, waterLevelIndex: 60, windSpeedKmh: 30, tideHeightMeters: 0.9, forecastRiskScore: 56 },
+  { hourOffset: 10, hour: '+10h', timeLabel: '+10h (01:00)', rainfallMm: 24,  riverLevelMeters: 4.3, dangerThresholdMeters: 5.0, affectedPopulationK: 272, waterLevelIndex: 54, windSpeedKmh: 28, tideHeightMeters: 0.8, forecastRiskScore: 49 },
+  { hourOffset: 11, hour: '+11h', timeLabel: '+11h (02:00)', rainfallMm: 19,  riverLevelMeters: 4.0, dangerThresholdMeters: 5.0, affectedPopulationK: 240, waterLevelIndex: 48, windSpeedKmh: 25, tideHeightMeters: 0.7, forecastRiskScore: 43 },
+  { hourOffset: 12, hour: '+12h', timeLabel: '+12h (03:00)', rainfallMm: 15,  riverLevelMeters: 3.8, dangerThresholdMeters: 5.0, affectedPopulationK: 214, waterLevelIndex: 43, windSpeedKmh: 22, tideHeightMeters: 0.6, forecastRiskScore: 38 },
+  { hourOffset: 13, hour: '+13h', timeLabel: '+13h (04:00)', rainfallMm: 12,  riverLevelMeters: 3.6, dangerThresholdMeters: 5.0, affectedPopulationK: 190, waterLevelIndex: 39, windSpeedKmh: 20, tideHeightMeters: 0.6, forecastRiskScore: 34 },
+  { hourOffset: 14, hour: '+14h', timeLabel: '+14h (05:00)', rainfallMm: 10,  riverLevelMeters: 3.4, dangerThresholdMeters: 5.0, affectedPopulationK: 172, waterLevelIndex: 35, windSpeedKmh: 18, tideHeightMeters: 0.7, forecastRiskScore: 30 },
+  { hourOffset: 15, hour: '+15h', timeLabel: '+15h (06:00)', rainfallMm: 9,   riverLevelMeters: 3.2, dangerThresholdMeters: 5.0, affectedPopulationK: 156, waterLevelIndex: 32, windSpeedKmh: 18, tideHeightMeters: 0.8, forecastRiskScore: 27 },
+  { hourOffset: 16, hour: '+16h', timeLabel: '+16h (07:00)', rainfallMm: 14,  riverLevelMeters: 3.1, dangerThresholdMeters: 5.0, affectedPopulationK: 148, waterLevelIndex: 30, windSpeedKmh: 20, tideHeightMeters: 1.0, forecastRiskScore: 26 },
+  { hourOffset: 17, hour: '+17h', timeLabel: '+17h (08:00)', rainfallMm: 18,  riverLevelMeters: 3.2, dangerThresholdMeters: 5.0, affectedPopulationK: 154, waterLevelIndex: 31, windSpeedKmh: 22, tideHeightMeters: 1.2, forecastRiskScore: 28 },
+  { hourOffset: 18, hour: '+18h', timeLabel: '+18h (09:00)', rainfallMm: 15,  riverLevelMeters: 3.1, dangerThresholdMeters: 5.0, affectedPopulationK: 146, waterLevelIndex: 29, windSpeedKmh: 20, tideHeightMeters: 1.4, forecastRiskScore: 26 },
+  { hourOffset: 19, hour: '+19h', timeLabel: '+19h (10:00)', rainfallMm: 11,  riverLevelMeters: 2.9, dangerThresholdMeters: 5.0, affectedPopulationK: 132, waterLevelIndex: 26, windSpeedKmh: 18, tideHeightMeters: 1.5, forecastRiskScore: 24 },
+  { hourOffset: 20, hour: '+20h', timeLabel: '+20h (11:00)', rainfallMm: 8,   riverLevelMeters: 2.8, dangerThresholdMeters: 5.0, affectedPopulationK: 120, waterLevelIndex: 24, windSpeedKmh: 16, tideHeightMeters: 1.3, forecastRiskScore: 22 },
+  { hourOffset: 21, hour: '+21h', timeLabel: '+21h (12:00)', rainfallMm: 6,   riverLevelMeters: 2.6, dangerThresholdMeters: 5.0, affectedPopulationK: 108, waterLevelIndex: 22, windSpeedKmh: 15, tideHeightMeters: 1.1, forecastRiskScore: 20 },
+  { hourOffset: 22, hour: '+22h', timeLabel: '+22h (13:00)', rainfallMm: 5,   riverLevelMeters: 2.5, dangerThresholdMeters: 5.0, affectedPopulationK: 96,  waterLevelIndex: 20, windSpeedKmh: 14, tideHeightMeters: 0.9, forecastRiskScore: 18 },
+  { hourOffset: 23, hour: '+23h', timeLabel: '+23h (14:00)', rainfallMm: 4,   riverLevelMeters: 2.4, dangerThresholdMeters: 5.0, affectedPopulationK: 88,  waterLevelIndex: 18, windSpeedKmh: 12, tideHeightMeters: 0.8, forecastRiskScore: 16 },
+  { hourOffset: 24, hour: '+24h', timeLabel: '+24h (15:00)', rainfallMm: 4,   riverLevelMeters: 2.3, dangerThresholdMeters: 5.0, affectedPopulationK: 82,  waterLevelIndex: 17, windSpeedKmh: 12, tideHeightMeters: 0.7, forecastRiskScore: 15 },
+];
