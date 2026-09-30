@@ -39,16 +39,16 @@ export const Footer: React.FC = () => {
   const t = FOOTER_TEXT[lang];
 
   return (
-    <footer className="w-full bg-white border-t border-blue-100 pt-8 pb-28 lg:pb-24 mt-10">
+    <footer className="w-full bg-[#FFFDFB] border-t border-[#2B2A4C]/10 pt-8 pb-28 lg:pb-24 mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-slate-700 font-semibold text-lg">
-          <ShieldCheck className="w-6 h-6 text-[#0F766E] shrink-0" aria-hidden="true" />
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-[#2B2A4C] font-semibold text-base">
+          <ShieldCheck className="w-6 h-6 text-[#34C38F] shrink-0" aria-hidden="true" />
           <span>{t.calmNote}</span>
-          <span className="text-slate-300" aria-hidden="true">•</span>
+          <span className="text-[#6B6A8A]/40" aria-hidden="true">•</span>
           <button
             type="button"
             onClick={triggerDemoAlert}
-            className="inline-flex items-center gap-1.5 text-base font-bold text-[#1D4ED8] underline underline-offset-4 hover:text-[#1E3A8A] cursor-pointer px-2 py-1"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#F2677A] underline underline-offset-4 hover:text-[#DE5568] cursor-pointer px-2 py-1"
           >
             <BellRing className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>{t.demoAlertLink}</span>
@@ -57,9 +57,9 @@ export const Footer: React.FC = () => {
 
         <a
           href="tel:112"
-          className="inline-flex items-center gap-2.5 px-6 py-3 rounded-[20px] bg-red-50 hover:bg-red-100 border-2 border-[#EF4444] text-[#B91C1C] font-extrabold text-xl transition-colors shrink-0"
+          className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-[20px] bg-[#FFDDE8] hover:bg-[#FFD1DF] border-2 border-[#E5484D] text-[#8B1A1E] font-extrabold text-[16px] transition-colors shrink-0"
         >
-          <PhoneCall className="w-5 h-5 text-[#B91C1C] shrink-0" aria-hidden="true" />
+          <PhoneCall className="w-5 h-5 text-[#8B1A1E] shrink-0" aria-hidden="true" />
           <span>{t.emergencyCall}</span>
         </a>
       </div>

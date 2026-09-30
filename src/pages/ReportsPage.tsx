@@ -301,54 +301,54 @@ export const ReportsPage: React.FC = () => {
       stepIndex === 3 ? '100%' : stepIndex === 2 ? '66%' : '33%';
 
     return (
-      <div className="space-y-2.5 pt-2 border-t border-blue-100">
+      <div className="space-y-2.5 pt-2 border-t border-[#2B2A4C]/10">
         {/* Status Chip + Authority Name */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span
-            className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-base font-extrabold border-2 ${
+            className={`inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-extrabold border-2 ${
               stepIndex === 3
-                ? 'bg-emerald-50 text-[#15803D] border-[#22C55E]'
+                ? 'bg-[#D8F5E6] text-[#11694A] border-[#34C38F]'
                 : stepIndex === 2
-                ? 'bg-sky-50 text-[#0369A1] border-[#0EA5E9]'
-                : 'bg-blue-50 text-[#1D4ED8] border-[#2563EB]'
+                ? 'bg-[#E8DEFF] text-[#2B2A4C] border-[#D5C2FF]'
+                : 'bg-[#DCEBFF] text-[#2B2A4C] border-[#BACFFF]'
             }`}
           >
-            <CheckCircle2 className="w-4 h-4 shrink-0" aria-hidden="true" />
+            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
             <span>{t.stageLabels[stage]}</span>
           </span>
 
-          <span className="text-base font-bold text-slate-700">
+          <span className="text-xs sm:text-sm font-bold text-[#6B6A8A]">
             {t.authorityLabel}
           </span>
         </div>
 
         {/* Small Progress Line */}
-        <div className="w-full h-2.5 rounded-full bg-blue-100 overflow-hidden">
+        <div className="w-full h-2 rounded-full bg-[#2B2A4C]/10 overflow-hidden">
           <div
             style={{ width: progressPercent }}
-            className="h-full rounded-full bg-gradient-to-r from-[#2563EB] via-[#0EA5E9] to-[#14B8A6] transition-all duration-300"
+            className="h-full rounded-full bg-gradient-to-r from-[#F2677A] via-[#E8DEFF] to-[#34C38F] transition-all duration-300"
           />
         </div>
 
         {/* 3 Stage Labels (Sent -> Seen by authority -> Action taken) with AA contrast */}
-        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-base font-bold">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs sm:text-sm font-bold">
           <span
             className={
-              stepIndex >= 1 ? 'text-[#1D4ED8]' : 'text-slate-600'
+              stepIndex >= 1 ? 'text-[#2B2A4C]' : 'text-[#6B6A8A]'
             }
           >
             {t.stageLabels.SENT}
           </span>
           <span
             className={
-              stepIndex >= 2 ? 'text-[#0369A1]' : 'text-slate-600'
+              stepIndex >= 2 ? 'text-[#2B2A4C]' : 'text-[#6B6A8A]'
             }
           >
             {t.stageLabels.SEEN}
           </span>
           <span
             className={
-              stepIndex >= 3 ? 'text-[#15803D]' : 'text-slate-600'
+              stepIndex >= 3 ? 'text-[#11694A]' : 'text-[#6B6A8A]'
             }
           >
             {t.stageLabels.ACTION_TAKEN}
@@ -361,52 +361,59 @@ export const ReportsPage: React.FC = () => {
   return (
     <div className="space-y-10 animate-fade-in">
       {/* BLOCK 1: "Sent automatically" */}
-      <section className="resq-card p-6 sm:p-8 space-y-6">
+      <section className="resq-card p-6 sm:p-8 space-y-6 bg-white border-2 border-[#2B2A4C]/10">
         <div className="space-y-2">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+          <h1 className="text-2xl sm:text-[28px] font-extrabold text-[#2B2A4C]">
             {t.block1Title}
           </h1>
-          <p className="text-xl font-bold text-[#1D4ED8] leading-relaxed">
+          <p className="text-base sm:text-lg font-bold text-[#F2677A] leading-relaxed">
             {t.block1TopLine}
           </p>
         </div>
 
-        {/* Max 3 cards per row */}
+        {/* Max 3 cards per row - Rotated Soft Pastels */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {autoGovReports.map((rep) => {
+          {autoGovReports.map((rep, idx) => {
             const stage: AuthorityReportStage = rep.statusStage || 'SENT';
+            const cardBg =
+              idx % 3 === 0
+                ? 'bg-[#DCEBFF] border-[#BACFFF]'
+                : idx % 3 === 1
+                ? 'bg-[#E8DEFF] border-[#D5C2FF]'
+                : 'bg-[#D8F5E6] border-[#B4E8CC]';
+
             return (
               <div
                 key={rep.id}
-                className="p-6 rounded-[20px] bg-[#F5F9FF] border-2 border-blue-100 flex flex-col justify-between gap-5"
+                className={`p-6 rounded-[20px] border-2 flex flex-col justify-between gap-5 ${cardBg}`}
               >
                 <div className="space-y-3">
                   {/* Area + Predicted Risk Badge */}
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h2 className="text-xl font-extrabold text-slate-900">
+                    <h2 className="text-base sm:text-lg font-extrabold text-[#2B2A4C]">
                       {rep.areaName[lang]}
                     </h2>
                     {renderRiskBadge(rep.risk, t.riskWords[rep.risk])}
                   </div>
 
-                  <p className="text-lg font-bold text-slate-800">
+                  <p className="text-base font-bold text-[#2B2A4C]">
                     {rep.streetName[lang]}
                   </p>
 
                   {/* Why ("Flooded 4 times in 5 years + heavy rain forecast") */}
-                  <div className="p-3.5 rounded-[16px] bg-white border border-blue-100">
-                    <span className="text-base font-extrabold text-[#1D4ED8] block">
+                  <div className="p-3.5 rounded-[16px] bg-white/90 border border-[#2B2A4C]/10">
+                    <span className="text-xs font-extrabold text-[#F2677A] block">
                       {t.whyLabel}
                     </span>
-                    <p className="text-lg font-semibold text-slate-800 leading-snug mt-0.5">
+                    <p className="text-sm font-semibold text-[#2B2A4C] leading-snug mt-0.5">
                       {rep.historicalBasis[lang]}
                     </p>
                   </div>
 
                   {/* Time Sent */}
-                  <div className="flex items-center gap-2 text-base font-bold text-slate-700">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#6B6A8A]">
                     <Clock
-                      className="w-5 h-5 text-[#1D4ED8] shrink-0"
+                      className="w-4 h-4 text-[#6B6A8A] shrink-0"
                       aria-hidden="true"
                     />
                     <span>{rep.sentTime[lang]}</span>
@@ -422,13 +429,13 @@ export const ReportsPage: React.FC = () => {
       </section>
 
       {/* BLOCK 2: "Report a problem" (3-Step Form) */}
-      <section className="resq-card p-6 sm:p-8 space-y-6">
+      <section className="resq-card p-6 sm:p-8 space-y-6 bg-white border-2 border-[#2B2A4C]/10">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#2B2A4C]">
               {t.block2Title}
             </h2>
-            <p className="text-lg text-slate-700">{t.block2Sub}</p>
+            <p className="text-[15px] text-[#6B6A8A]">{t.block2Sub}</p>
           </div>
 
           {!isFormOpen && (
@@ -438,9 +445,9 @@ export const ReportsPage: React.FC = () => {
                 setSubmittedRefId(null);
                 setIsFormOpen(true);
               }}
-              className="btn-main inline-flex items-center gap-2.5 cursor-pointer"
+              className="btn-main inline-flex items-center gap-2.5 cursor-pointer text-[15px]"
             >
-              <PlusCircle className="w-6 h-6 shrink-0" aria-hidden="true" />
+              <PlusCircle className="w-5 h-5 shrink-0" aria-hidden="true" />
               <span>{t.openFormBtn}</span>
             </button>
           )}
@@ -448,17 +455,17 @@ export const ReportsPage: React.FC = () => {
 
         {/* Friendly Confirmation Banner on Submit */}
         {submittedRefId && (
-          <div className="p-6 rounded-[20px] bg-emerald-50 border-2 border-[#22C55E] space-y-4">
+          <div className="p-5 sm:p-6 rounded-[20px] bg-[#D8F5E6] border-2 border-[#34C38F] space-y-4">
             <div className="flex items-start gap-3">
               <CheckCircle2
-                className="w-8 h-8 text-[#15803D] shrink-0 mt-0.5"
+                className="w-7 h-7 text-[#34C38F] shrink-0 mt-0.5"
                 aria-hidden="true"
               />
               <div className="space-y-1">
-                <h3 className="text-2xl font-extrabold text-slate-900">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#2B2A4C]">
                   {t.confirmTitle}
                 </h3>
-                <p className="text-lg font-bold text-slate-800 leading-relaxed">
+                <p className="text-base font-bold text-[#2B2A4C] leading-relaxed">
                   {t.confirmText(submittedRefId)}
                 </p>
               </div>
@@ -467,7 +474,7 @@ export const ReportsPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setSubmittedRefId(null)}
-              className="btn-main inline-flex items-center gap-2 cursor-pointer"
+              className="btn-main inline-flex items-center gap-2 cursor-pointer text-[15px]"
             >
               <span>{t.reportAnotherBtn}</span>
             </button>
@@ -481,7 +488,7 @@ export const ReportsPage: React.FC = () => {
             <div className="space-y-2.5">
               <label
                 htmlFor="report-location-input"
-                className="text-xl font-extrabold text-slate-900 block"
+                className="text-base sm:text-lg font-extrabold text-[#2B2A4C] block"
               >
                 {t.step1Label}
               </label>
@@ -494,43 +501,55 @@ export const ReportsPage: React.FC = () => {
                     setHasEditedLocation(true);
                     setLocationText(e.target.value);
                   }}
-                  className="w-full pl-12 pr-5 py-3.5 rounded-[16px] bg-[#F5F9FF] border-2 border-blue-200 text-lg font-bold text-slate-900 focus:border-[#2563EB]"
+                  className="w-full pl-12 pr-5 py-3 rounded-[16px] bg-[#FFF9F4] border-2 border-[#2B2A4C]/15 text-[15px] font-bold text-[#2B2A4C] focus:border-[#F2677A]"
                 />
                 <MapPin
-                  className="w-6 h-6 text-[#1D4ED8] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
+                  className="w-5 h-5 text-[#F2677A] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
                   aria-hidden="true"
                 />
               </div>
             </div>
 
-            {/* ② What's the problem (5 Big Icon Choices, max 3 cards per row) */}
+            {/* ② What's the problem (5 Big Icon Choices, max 3 cards per row) - Rotated Soft Pastels */}
             <div className="space-y-3">
-              <span className="text-xl font-extrabold text-slate-900 block">
+              <span className="text-base sm:text-lg font-extrabold text-[#2B2A4C] block">
                 {t.step2Label}
               </span>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {PROBLEM_OPTIONS.map((option) => {
                   const Icon = option.icon;
                   const active = selectedProblem === option.id;
+
+                  const pastelChoiceBg =
+                    option.id === 'water_logging'
+                      ? 'bg-[#DCEBFF] border-[#BACFFF]'
+                      : option.id === 'blocked_drain'
+                      ? 'bg-[#FFE3D3] border-[#F7CBB6]'
+                      : option.id === 'road_damage'
+                      ? 'bg-[#FFDDE8] border-[#F5C5D4]'
+                      : option.id === 'fallen_tree'
+                      ? 'bg-[#D8F5E6] border-[#B4E8CC]'
+                      : 'bg-[#FFF2C4] border-[#F2E09E]';
+
                   return (
                     <button
                       key={option.id}
                       type="button"
                       onClick={() => setSelectedProblem(option.id)}
                       aria-pressed={active}
-                      className={`p-5 rounded-[20px] border-2 text-left flex items-center gap-4 transition-all cursor-pointer ${
+                      className={`p-5 rounded-[20px] border-2 text-left flex items-center gap-4 transition-all cursor-pointer ${pastelChoiceBg} ${
                         active
-                          ? 'bg-blue-50 border-[#2563EB] shadow-sm'
-                          : 'bg-[#F5F9FF] border-blue-100 hover:border-[#0EA5E9]'
+                          ? 'border-[#F2677A] ring-2 ring-[#F2677A]/25 shadow-xs'
+                          : 'hover:border-[#F2677A]'
                       }`}
                     >
-                      <div className="w-12 h-12 rounded-[14px] bg-white border border-blue-100 flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-[14px] bg-white border border-[#2B2A4C]/10 flex items-center justify-center shrink-0">
                         <Icon
-                          className={`w-7 h-7 ${option.colorClass}`}
+                          className={`w-6 h-6 ${option.colorClass}`}
                           aria-hidden="true"
                         />
                       </div>
-                      <span className="text-xl font-extrabold text-slate-900">
+                      <span className="text-base sm:text-lg font-extrabold text-[#2B2A4C]">
                         {t.problemLabels[option.id]}
                       </span>
                     </button>
@@ -541,15 +560,15 @@ export const ReportsPage: React.FC = () => {
 
             {/* ③ Optional photo and a note */}
             <div className="space-y-4">
-              <span className="text-xl font-extrabold text-slate-900 block">
+              <span className="text-base sm:text-lg font-extrabold text-[#2B2A4C] block">
                 {t.step3Label}
               </span>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
                 {/* Photo Upload Button */}
-                <label className="btn-secondary flex items-center justify-center gap-2.5 cursor-pointer text-center">
+                <label className="btn-secondary flex items-center justify-center gap-2.5 cursor-pointer text-center text-[15px]">
                   <Camera
-                    className="w-6 h-6 text-[#1D4ED8] shrink-0"
+                    className="w-5 h-5 text-[#2B2A4C] shrink-0"
                     aria-hidden="true"
                   />
                   <span>
@@ -573,7 +592,7 @@ export const ReportsPage: React.FC = () => {
                     onChange={(e) => setNoteText(e.target.value)}
                     placeholder={t.notePlaceholder}
                     aria-label={t.step3Label}
-                    className="w-full px-5 py-3.5 rounded-[16px] bg-[#F5F9FF] border-2 border-blue-200 text-lg text-slate-900 placeholder:text-slate-600 focus:border-[#2563EB]"
+                    className="w-full px-5 py-3 rounded-[16px] bg-[#FFF9F4] border-2 border-[#2B2A4C]/15 text-[15px] text-[#2B2A4C] placeholder:text-[#6B6A8A] focus:border-[#F2677A]"
                   />
                 </div>
               </div>
@@ -583,9 +602,9 @@ export const ReportsPage: React.FC = () => {
             <div className="pt-2">
               <button
                 type="submit"
-                className="btn-main inline-flex items-center justify-center gap-3 cursor-pointer"
+                className="btn-main inline-flex items-center justify-center gap-3 cursor-pointer text-[15px]"
               >
-                <Send className="w-6 h-6 shrink-0" aria-hidden="true" />
+                <Send className="w-5 h-5 shrink-0" aria-hidden="true" />
                 <span>{t.sendToAuthorityBtn}</span>
               </button>
             </div>

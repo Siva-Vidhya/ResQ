@@ -122,11 +122,11 @@ export const FloatingTextControl: React.FC = () => {
         <div
           role="dialog"
           aria-label={t.title}
-          className="mb-3 w-72 sm:w-80 bg-white rounded-2xl border-2 border-blue-200 shadow-2xl p-4 animate-fade-in flex flex-col gap-3.5"
+          className="mb-3 w-72 sm:w-80 bg-white rounded-2xl border-2 border-[#E8DEFF] shadow-2xl p-4 animate-fade-in flex flex-col gap-3.5"
         >
           {/* Header */}
-          <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-            <span className="text-base font-extrabold text-slate-800 flex items-center gap-1.5">
+          <div className="flex items-center justify-between pb-2 border-b border-[#2B2A4C]/10">
+            <span className="text-sm font-extrabold text-[#2B2A4C] flex items-center gap-1.5">
               <span>♿</span>
               <span>{t.title}</span>
             </span>
@@ -134,7 +134,7 @@ export const FloatingTextControl: React.FC = () => {
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label={t.close}
-              className="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-lg"
+              className="w-8 h-8 rounded-full hover:bg-[#FFF9F4] flex items-center justify-center text-[#6B6A8A] font-bold text-base"
             >
               ✕
             </button>
@@ -142,7 +142,7 @@ export const FloatingTextControl: React.FC = () => {
 
           {/* Text Size Controls */}
           <div>
-            <div className="text-sm font-bold text-slate-600 mb-1.5">
+            <div className="text-xs font-bold text-[#6B6A8A] mb-1.5">
               {t.textSizeLabel}
             </div>
             <div className="grid grid-cols-3 gap-1.5">
@@ -153,10 +153,10 @@ export const FloatingTextControl: React.FC = () => {
                     key={level}
                     type="button"
                     onClick={() => handleSetScale(level)}
-                    className={`py-1.5 px-2 rounded-xl text-center font-bold text-sm transition-all border ${
+                    className={`py-1.5 px-2 rounded-xl text-center font-bold text-xs transition-all border ${
                       isActive
-                        ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
-                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-blue-50 hover:border-blue-300'
+                        ? 'bg-[#F2677A] text-white border-[#F2677A] shadow-xs'
+                        : 'bg-[#FFF9F4] text-[#2B2A4C] border-[#2B2A4C]/15 hover:bg-[#E8DEFF]'
                     }`}
                   >
                     {t.sizeNames[level]}
@@ -167,24 +167,24 @@ export const FloatingTextControl: React.FC = () => {
           </div>
 
           {/* Rain Effect Switch */}
-          <div className="pt-2 border-t border-slate-100">
+          <div className="pt-2 border-t border-[#2B2A4C]/10">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-xl" aria-hidden="true">
+                <span className="text-lg" aria-hidden="true">
                   🌧️
                 </span>
                 <div>
-                  <div className="text-sm font-extrabold text-slate-800">
+                  <div className="text-xs font-extrabold text-[#2B2A4C]">
                     {t.rainLabel}:{' '}
                     <span
                       className={
-                        rainEffectEnabled ? 'text-blue-600' : 'text-slate-400'
+                        rainEffectEnabled ? 'text-[#8FA8FF]' : 'text-[#6B6A8A]'
                       }
                     >
                       {rainEffectEnabled ? t.rainOn : t.rainOff}
                     </span>
                   </div>
-                  <div className="text-xs text-slate-500">
+                  <div className="text-[11px] text-[#6B6A8A]">
                     {rainEffectEnabled ? 'Active rainfall' : 'Paused / disabled'}
                   </div>
                 </div>
@@ -198,7 +198,7 @@ export const FloatingTextControl: React.FC = () => {
                 onClick={handleToggleRain}
                 aria-label={`${t.rainLabel}: ${rainEffectEnabled ? t.rainOn : t.rainOff}`}
                 className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors focus:outline-none cursor-pointer ${
-                  rainEffectEnabled ? 'bg-blue-600' : 'bg-slate-300'
+                  rainEffectEnabled ? 'bg-[#8FA8FF]' : 'bg-slate-300'
                 }`}
               >
                 <span
@@ -219,12 +219,12 @@ export const FloatingTextControl: React.FC = () => {
         aria-expanded={isOpen}
         aria-label={t.ariaLabel(t.sizeNames[fontScale])}
         title={t.ariaLabel(t.sizeNames[fontScale])}
-        className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white hover:bg-blue-50 border-2 border-[#1D4ED8] text-[#1D4ED8] font-extrabold text-base shadow-lg transition-all cursor-pointer hover:shadow-xl"
+        className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white hover:bg-[#E8DEFF]/30 border-2 border-[#F2677A] text-[#2B2A4C] font-extrabold text-[15px] shadow-md transition-all cursor-pointer hover:shadow-lg"
       >
-        <span className="tracking-tight">{badgeSymbol}</span>
+        <span className="tracking-tight text-[#F2677A]">{badgeSymbol}</span>
         {rainEffectEnabled ? (
           <span
-            className="inline-block w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"
+            className="inline-block w-2.5 h-2.5 rounded-full bg-[#8FA8FF] animate-pulse"
             title="Rain effect active"
             aria-hidden="true"
           />
@@ -235,7 +235,7 @@ export const FloatingTextControl: React.FC = () => {
             aria-hidden="true"
           />
         )}
-        <span className="text-base font-bold text-slate-700 hidden sm:inline">
+        <span className="text-sm font-bold text-[#2B2A4C] hidden sm:inline">
           {t.sizeNames[fontScale]}
         </span>
       </button>

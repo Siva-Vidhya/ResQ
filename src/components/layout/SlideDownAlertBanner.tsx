@@ -49,19 +49,19 @@ export const SlideDownAlertBanner: React.FC = () => {
       aria-live="assertive"
       className={`w-full border-b-2 transition-all duration-300 ${
         isDanger
-          ? 'bg-red-50 border-[#EF4444] text-slate-900'
-          : 'bg-amber-50 border-[#F59E0B] text-slate-900'
+          ? 'bg-[#FFDDE8] border-[#E5484D] text-[#2B2A4C]'
+          : 'bg-[#FFF5EB] border-[#F59A4A] text-[#2B2A4C]'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
         {/* Icon + One Plain Sentence */}
         <div className="flex items-center gap-3 flex-1 min-w-[240px]">
           {isDanger ? (
-            <ShieldAlert className="w-7 h-7 text-[#EF4444] shrink-0" />
+            <ShieldAlert className="w-6 h-6 text-[#E5484D] shrink-0" />
           ) : (
-            <AlertTriangle className="w-7 h-7 text-[#F59E0B] shrink-0" />
+            <AlertTriangle className="w-6 h-6 text-[#F59A4A] shrink-0" />
           )}
-          <p className="text-lg font-extrabold text-slate-900 leading-snug">
+          <p className="text-base font-extrabold text-[#2B2A4C] leading-snug">
             {activeBannerAlert.message[lang]}
           </p>
         </div>
@@ -71,9 +71,9 @@ export const SlideDownAlertBanner: React.FC = () => {
           <button
             type="button"
             onClick={handleViewSafeRoute}
-            className="px-5 py-2.5 rounded-[16px] bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-extrabold text-base inline-flex items-center gap-2 shadow-sm cursor-pointer"
+            className="btn-main px-4 py-2 rounded-[16px] inline-flex items-center gap-2 shadow-xs cursor-pointer text-[15px]"
           >
-            <Navigation className="w-5 h-5 shrink-0" />
+            <Navigation className="w-4 h-4 shrink-0" />
             <span>{t.viewSafeRoute}</span>
           </button>
 
@@ -81,9 +81,9 @@ export const SlideDownAlertBanner: React.FC = () => {
             type="button"
             onClick={dismissBannerAlert}
             aria-label={t.dismissLabel}
-            className="w-12 h-12 rounded-[14px] bg-white/80 hover:bg-white border border-slate-200 text-slate-700 flex items-center justify-center cursor-pointer"
+            className="w-10 h-10 rounded-[14px] bg-white/80 hover:bg-white border border-[#2B2A4C]/15 text-[#2B2A4C] flex items-center justify-center cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
       </div>

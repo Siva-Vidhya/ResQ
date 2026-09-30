@@ -652,7 +652,7 @@ export const SafeRoutePage: React.FC = () => {
       {/* 1. MAP FRAME WITH EXPLICIT HEIGHT & CONTROL CARD INSIDE */}
       <div
         style={{ height: '70vh', minHeight: '580px' }}
-        className="relative w-full rounded-[20px] overflow-hidden border-2 border-blue-200 shadow-soft bg-[#EEF6FF]"
+        className="relative w-full rounded-[20px] overflow-hidden border-2 border-[#E8DEFF] shadow-soft bg-[#FFF9F4]"
       >
         {/* Leaflet Map Container (100% height of sized parent) */}
         <div
@@ -664,46 +664,46 @@ export const SafeRoutePage: React.FC = () => {
 
         {/* Friendly Tile Fallback Message if External Vector Tiles Fail */}
         {tileFallbackActive && (
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-blue-200 shadow-sm inline-flex items-center gap-2 text-base font-bold text-slate-800">
-            <Info className="w-4 h-4 text-[#1D4ED8] shrink-0" aria-hidden="true" />
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#2B2A4C]/10 shadow-xs inline-flex items-center gap-2 text-sm font-bold text-[#2B2A4C]">
+            <Info className="w-4 h-4 text-[#F2677A] shrink-0" aria-hidden="true" />
             <span>{t.tileFallbackNotice}</span>
           </div>
         )}
 
         {/* Map Legend with the Four Risk Grades + Route Styles */}
-        <div className="absolute top-3 left-3 right-14 lg:top-auto lg:left-auto lg:bottom-6 lg:right-3 z-20 bg-white/95 backdrop-blur-md p-2 sm:p-2.5 rounded-[16px] border border-blue-100 shadow-md flex flex-wrap items-center gap-x-3.5 gap-y-1.5 max-w-[calc(100%-80px)] lg:max-w-none">
+        <div className="absolute top-3 left-3 right-14 lg:top-auto lg:left-auto lg:bottom-6 lg:right-3 z-20 bg-white/95 backdrop-blur-md p-2 sm:p-2.5 rounded-[16px] border border-[#2B2A4C]/10 shadow-md flex flex-wrap items-center gap-x-3.5 gap-y-1.5 max-w-[calc(100%-80px)] lg:max-w-none">
           {/* 0-25% Clear */}
-          <span className="inline-flex items-center gap-1.5 text-sm sm:text-base font-bold text-[#15803D]">
-            <CheckCircle2 className="w-4 h-4 text-[#22C55E] shrink-0" aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#11694A]">
+            <CheckCircle2 className="w-4 h-4 text-[#34C38F] shrink-0" aria-hidden="true" />
             <span>{t.legendGradeClear}</span>
           </span>
           {/* 26-50% Low risk */}
-          <span className="inline-flex items-center gap-1.5 text-sm sm:text-base font-bold text-[#854D0E]">
-            <AlertTriangle className="w-4 h-4 text-[#FACC15] shrink-0" aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#7A4F01]">
+            <AlertTriangle className="w-4 h-4 text-[#F5C451] shrink-0" aria-hidden="true" />
             <span>{t.legendGradeLow}</span>
           </span>
           {/* 51-75% Flood-prone */}
-          <span className="inline-flex items-center gap-1.5 text-sm sm:text-base font-bold text-[#C2410C]">
-            <AlertTriangle className="w-4 h-4 text-[#F97316] shrink-0" aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#8B3E03]">
+            <AlertTriangle className="w-4 h-4 text-[#F59A4A] shrink-0" aria-hidden="true" />
             <span>{t.legendGradeProne}</span>
           </span>
           {/* 76-100% Likely flooded */}
-          <span className="inline-flex items-center gap-1.5 text-sm sm:text-base font-bold text-[#B91C1C]">
-            <ShieldAlert className="w-4 h-4 text-[#EF4444] shrink-0" aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#8B1A1E]">
+            <ShieldAlert className="w-4 h-4 text-[#E5484D] shrink-0" aria-hidden="true" />
             <span>{t.legendGradeFlooded}</span>
           </span>
           {/* Safest route with arrows */}
-          <span className="inline-flex items-center gap-1.5 text-sm sm:text-base font-extrabold text-[#1D4ED8]">
+          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2B2A4C]">
             <span
-              className="w-5 h-2 rounded-full bg-[#22C55E] border border-white shadow-xs inline-block"
+              className="w-5 h-2 rounded-full bg-[#34C38F] border border-white shadow-xs inline-block"
               aria-hidden="true"
             />
             <span>{t.legendSafest}</span>
           </span>
           {/* Shortest route dashed */}
-          <span className="inline-flex items-center gap-1.5 text-sm sm:text-base font-bold text-slate-700">
+          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#6B6A8A]">
             <span
-              className="w-5 h-0.5 border-b-2 border-dashed border-red-500 inline-block"
+              className="w-5 h-0.5 border-b-2 border-dashed border-[#E5484D] inline-block"
               aria-hidden="true"
             />
             <span>{t.legendShortest}</span>
@@ -711,16 +711,16 @@ export const SafeRoutePage: React.FC = () => {
         </div>
 
         {/* CONTROL CARD INSIDE MAP FRAME (Desktop: Left side, max-width 380px, scrollable inside; Mobile: Bottom sheet) */}
-        <div className="absolute bottom-0 inset-x-0 max-h-[52%] lg:bottom-3 lg:top-3 lg:left-3 lg:right-auto lg:w-[380px] lg:max-w-[380px] lg:max-h-[calc(100%-24px)] z-20 overflow-y-auto bg-white rounded-t-[20px] lg:rounded-[20px] border-t-2 lg:border-2 border-blue-200 shadow-lg p-3.5 sm:p-4 space-y-2.5">
+        <div className="absolute bottom-0 inset-x-0 max-h-[52%] lg:bottom-3 lg:top-3 lg:left-3 lg:right-auto lg:w-[380px] lg:max-w-[380px] lg:max-h-[calc(100%-24px)] z-20 overflow-y-auto bg-white rounded-t-[20px] lg:rounded-[20px] border-t-2 lg:border-2 border-[#E8DEFF] shadow-lg p-3.5 sm:p-4 space-y-2.5">
           <div className="flex items-center justify-between gap-2">
-            <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">
+            <h1 className="text-lg sm:text-xl font-extrabold text-[#2B2A4C] leading-tight">
               {t.pageTitle}
             </h1>
           </div>
 
           {/* 3 Sample Preset Trips */}
           <div className="space-y-1">
-            <span className="text-base font-extrabold text-slate-700 block">
+            <span className="text-xs sm:text-sm font-extrabold text-[#6B6A8A] block">
               {t.sampleTripsLabel}
             </span>
             <div className="flex flex-wrap gap-1.5">
@@ -731,10 +731,10 @@ export const SafeRoutePage: React.FC = () => {
                     key={preset.id}
                     type="button"
                     onClick={() => handleSelectPreset(preset.fromId, preset.toId)}
-                    className={`px-3 py-1 rounded-[12px] text-base font-bold border transition-all cursor-pointer ${
+                    className={`px-3 py-1 rounded-[12px] text-xs sm:text-sm font-bold border transition-all cursor-pointer ${
                       isCurrent
-                        ? 'bg-[#1D4ED8] text-white border-[#1D4ED8]'
-                        : 'bg-[#F5F9FF] text-slate-800 border-blue-200 hover:border-[#0EA5E9]'
+                        ? 'bg-[#F2677A] text-white border-[#F2677A]'
+                        : 'bg-[#FFF9F4] text-[#2B2A4C] border-[#2B2A4C]/15 hover:border-[#F2677A]'
                     }`}
                   >
                     {preset.label[lang]}
@@ -750,7 +750,7 @@ export const SafeRoutePage: React.FC = () => {
               <div>
                 <label
                   htmlFor="route-from-select"
-                  className="text-base font-bold text-slate-700 block mb-0.5"
+                  className="text-xs sm:text-sm font-bold text-[#6B6A8A] block mb-0.5"
                 >
                   {t.fromLabel}
                 </label>
@@ -758,7 +758,7 @@ export const SafeRoutePage: React.FC = () => {
                   id="route-from-select"
                   value={fromId}
                   onChange={(e) => setFromId(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-[12px] bg-[#F5F9FF] border-2 border-blue-200 text-lg font-extrabold text-slate-900 focus:border-[#2563EB]"
+                  className="w-full px-3 py-1.5 rounded-[12px] bg-[#FFF9F4] border-2 border-[#2B2A4C]/15 text-[15px] font-bold text-[#2B2A4C] focus:border-[#F2677A]"
                 >
                   {SELECTABLE_NODES.map((node) => (
                     <option key={node.id} value={node.id}>
@@ -771,7 +771,7 @@ export const SafeRoutePage: React.FC = () => {
               <div>
                 <label
                   htmlFor="route-to-select"
-                  className="text-base font-bold text-slate-700 block mb-0.5"
+                  className="text-xs sm:text-sm font-bold text-[#6B6A8A] block mb-0.5"
                 >
                   {t.toLabel}
                 </label>
@@ -779,7 +779,7 @@ export const SafeRoutePage: React.FC = () => {
                   id="route-to-select"
                   value={toId}
                   onChange={(e) => setToId(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-[12px] bg-[#F5F9FF] border-2 border-blue-200 text-lg font-extrabold text-slate-900 focus:border-[#2563EB]"
+                  className="w-full px-3 py-1.5 rounded-[12px] bg-[#FFF9F4] border-2 border-[#2B2A4C]/15 text-[15px] font-bold text-[#2B2A4C] focus:border-[#F2677A]"
                 >
                   {SELECTABLE_NODES.map((node) => (
                     <option key={node.id} value={node.id}>
@@ -795,9 +795,9 @@ export const SafeRoutePage: React.FC = () => {
               onClick={handleSwap}
               aria-label={t.swapLabel}
               title={t.swapLabel}
-              className="w-11 h-11 rounded-[14px] bg-[#F5F9FF] hover:bg-blue-100 border-2 border-blue-200 text-[#1D4ED8] flex items-center justify-center shrink-0 cursor-pointer mt-4"
+              className="w-10 h-10 rounded-[14px] bg-[#FFF9F4] hover:bg-[#E8DEFF] border-2 border-[#2B2A4C]/15 text-[#2B2A4C] flex items-center justify-center shrink-0 cursor-pointer mt-4"
             >
-              <ArrowUpDown className="w-5 h-5" aria-hidden="true" />
+              <ArrowUpDown className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
 
@@ -805,9 +805,9 @@ export const SafeRoutePage: React.FC = () => {
           <button
             type="button"
             onClick={handleFindSafest}
-            className="btn-secondary w-full flex items-center justify-center gap-2 py-2 cursor-pointer"
+            className="btn-secondary w-full flex items-center justify-center gap-2 py-2 cursor-pointer text-[15px]"
           >
-            <Navigation className="w-5 h-5 shrink-0" aria-hidden="true" />
+            <Navigation className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>{t.findSafestBtn}</span>
           </button>
 
@@ -820,59 +820,59 @@ export const SafeRoutePage: React.FC = () => {
               aria-pressed={selectedOption === 'safest'}
               className={`w-full p-3 rounded-[14px] border-2 text-left transition-all cursor-pointer flex flex-col gap-1.5 ${
                 selectedOption === 'safest'
-                  ? 'bg-emerald-50/90 border-[#22C55E] shadow-sm'
-                  : 'bg-[#F5F9FF] border-slate-200 hover:border-emerald-400'
+                  ? 'bg-[#D8F5E6] border-[#34C38F] shadow-xs'
+                  : 'bg-[#FFF9F4] border-[#2B2A4C]/15 hover:border-[#34C38F]'
               }`}
             >
               <div className="flex flex-wrap items-center justify-between gap-1.5">
-                <span className="text-lg font-extrabold text-slate-900">
+                <span className="text-base font-extrabold text-[#2B2A4C]">
                   {t.safestHeading}
                 </span>
-                <span className="pill-safe inline-flex items-center gap-1.5 px-2.5 py-0.5 text-base shrink-0">
+                <span className="pill-safe inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs shrink-0">
                   <CheckCircle2
-                    className="w-4 h-4 text-[#15803D] shrink-0"
+                    className="w-3.5 h-3.5 text-[#11694A] shrink-0"
                     aria-hidden="true"
                   />
                   <span>{t.recommendedBadge}</span>
                 </span>
               </div>
-              <p className="text-base font-bold text-slate-800 leading-snug">
+              <p className="text-sm font-bold text-[#2B2A4C] leading-snug">
                 {t.safestSummary(routes.safest.totalTimeMin)}
               </p>
 
               {/* Slim Route Safety Bar for Safest Route */}
-              <div className="pt-1.5 border-t border-emerald-200/80 space-y-1">
+              <div className="pt-1.5 border-t border-[#34C38F]/30 space-y-1">
                 <div className="h-2 w-full rounded-full bg-slate-200 overflow-hidden flex">
                   {routes.safest.safetyBreakdown.clearShare > 0 && (
                     <div
                       style={{ width: `${routes.safest.safetyBreakdown.clearShare}%` }}
-                      className="h-full bg-[#22C55E]"
+                      className="h-full bg-[#34C38F]"
                       title={`Clear: ${routes.safest.safetyBreakdown.clearShare}%`}
                     />
                   )}
                   {routes.safest.safetyBreakdown.lowShare > 0 && (
                     <div
                       style={{ width: `${routes.safest.safetyBreakdown.lowShare}%` }}
-                      className="h-full bg-[#FACC15]"
+                      className="h-full bg-[#F5C451]"
                       title={`Low risk: ${routes.safest.safetyBreakdown.lowShare}%`}
                     />
                   )}
                   {routes.safest.safetyBreakdown.proneShare > 0 && (
                     <div
                       style={{ width: `${routes.safest.safetyBreakdown.proneShare}%` }}
-                      className="h-full bg-[#F97316]"
+                      className="h-full bg-[#F59A4A]"
                       title={`Flood-prone: ${routes.safest.safetyBreakdown.proneShare}%`}
                     />
                   )}
                   {routes.safest.safetyBreakdown.floodedShare > 0 && (
                     <div
                       style={{ width: `${routes.safest.safetyBreakdown.floodedShare}%` }}
-                      className="h-full bg-[#EF4444]"
+                      className="h-full bg-[#E5484D]"
                       title={`Likely flooded: ${routes.safest.safetyBreakdown.floodedShare}%`}
                     />
                   )}
                 </div>
-                <p className="text-sm font-bold text-emerald-800 leading-tight">
+                <p className="text-xs font-bold text-[#11694A] leading-tight">
                   {routes.safest.safetyBreakdown.summaryText[lang]}
                 </p>
               </div>
@@ -885,59 +885,59 @@ export const SafeRoutePage: React.FC = () => {
               aria-pressed={selectedOption === 'shortest'}
               className={`w-full p-3 rounded-[14px] border-2 text-left transition-all cursor-pointer flex flex-col gap-1.5 ${
                 selectedOption === 'shortest'
-                  ? 'bg-red-50/90 border-[#EF4444]'
-                  : 'bg-[#F5F9FF] border-slate-200 hover:border-red-300'
+                  ? 'bg-[#FFDDE8] border-[#E5484D]'
+                  : 'bg-[#FFF9F4] border-[#2B2A4C]/15 hover:border-[#E5484D]'
               }`}
             >
               <div className="flex flex-wrap items-center justify-between gap-1.5">
-                <span className="text-lg font-extrabold text-slate-900">
+                <span className="text-base font-extrabold text-[#2B2A4C]">
                   {t.shortestHeading}
                 </span>
-                <span className="pill-danger inline-flex items-center gap-1.5 px-2.5 py-0.5 text-base shrink-0">
+                <span className="pill-danger inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs shrink-0">
                   <AlertTriangle
-                    className="w-4 h-4 text-[#B91C1C] shrink-0"
+                    className="w-3.5 h-3.5 text-[#8B1A1E] shrink-0"
                     aria-hidden="true"
                   />
                   <span>{t.shortestWarningBadge}</span>
                 </span>
               </div>
-              <p className="text-base font-bold text-slate-800 leading-snug">
+              <p className="text-sm font-bold text-[#2B2A4C] leading-snug">
                 {t.shortestSummary(routes.shortest.totalTimeMin, shortestRiskCount)}
               </p>
 
               {/* Slim Route Safety Bar for Shortest Route */}
-              <div className="pt-1.5 border-t border-red-200/80 space-y-1">
+              <div className="pt-1.5 border-t border-[#E5484D]/30 space-y-1">
                 <div className="h-2 w-full rounded-full bg-slate-200 overflow-hidden flex">
                   {routes.shortest.safetyBreakdown.clearShare > 0 && (
                     <div
                       style={{ width: `${routes.shortest.safetyBreakdown.clearShare}%` }}
-                      className="h-full bg-[#22C55E]"
+                      className="h-full bg-[#34C38F]"
                       title={`Clear: ${routes.shortest.safetyBreakdown.clearShare}%`}
                     />
                   )}
                   {routes.shortest.safetyBreakdown.lowShare > 0 && (
                     <div
                       style={{ width: `${routes.shortest.safetyBreakdown.lowShare}%` }}
-                      className="h-full bg-[#FACC15]"
+                      className="h-full bg-[#F5C451]"
                       title={`Low risk: ${routes.shortest.safetyBreakdown.lowShare}%`}
                     />
                   )}
                   {routes.shortest.safetyBreakdown.proneShare > 0 && (
                     <div
                       style={{ width: `${routes.shortest.safetyBreakdown.proneShare}%` }}
-                      className="h-full bg-[#F97316]"
+                      className="h-full bg-[#F59A4A]"
                       title={`Flood-prone: ${routes.shortest.safetyBreakdown.proneShare}%`}
                     />
                   )}
                   {routes.shortest.safetyBreakdown.floodedShare > 0 && (
                     <div
                       style={{ width: `${routes.shortest.safetyBreakdown.floodedShare}%` }}
-                      className="h-full bg-[#EF4444]"
+                      className="h-full bg-[#E5484D]"
                       title={`Likely flooded: ${routes.shortest.safetyBreakdown.floodedShare}%`}
                     />
                   )}
                 </div>
-                <p className="text-sm font-bold text-red-800 leading-tight">
+                <p className="text-xs font-bold text-[#8B1A1E] leading-tight">
                   {routes.shortest.safetyBreakdown.summaryText[lang]}
                 </p>
               </div>
@@ -948,17 +948,17 @@ export const SafeRoutePage: React.FC = () => {
           <button
             type="button"
             onClick={() => setShowTurnByTurn((prev) => !prev)}
-            className="btn-main w-full flex items-center justify-center gap-2.5 py-3 cursor-pointer"
+            className="btn-main w-full flex items-center justify-center gap-2.5 py-2.5 cursor-pointer text-[15px]"
           >
-            <Flag className="w-5 h-5 shrink-0" aria-hidden="true" />
+            <Flag className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>{showTurnByTurn ? t.hideStepsBtn : t.startSafeRouteBtn}</span>
           </button>
         </div>
       </div>
 
       {/* 2. INFO BANNER BELOW THE MAP WITH ITS OWN SPACING */}
-      <div className="resq-card mt-6 p-5 sm:p-6 bg-gradient-to-r from-blue-50/90 via-sky-50/90 to-teal-50/90 border-2 border-blue-200">
-        <p className="text-lg sm:text-xl font-extrabold text-slate-900 text-center">
+      <div className="resq-card mt-6 p-4 sm:p-5 bg-gradient-to-r from-[#DCEBFF] via-[#E8DEFF] to-[#D8F5E6] border-2 border-[#2B2A4C]/10">
+        <p className="text-base sm:text-lg font-bold text-[#2B2A4C] text-center">
           {t.underMapLine}
         </p>
       </div>
@@ -967,15 +967,15 @@ export const SafeRoutePage: React.FC = () => {
       {showTurnByTurn && (
         <section
           aria-label={t.turnByTurnTitle}
-          className="resq-card p-6 sm:p-8 space-y-6"
+          className="resq-card p-6 sm:p-8 space-y-6 bg-white border-2 border-[#2B2A4C]/10"
         >
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#2B2A4C]">
               {t.turnByTurnTitle}
             </h2>
-            <span className="pill-safe inline-flex items-center gap-2 px-4 py-1.5 text-base">
+            <span className="pill-safe inline-flex items-center gap-2 px-3.5 py-1 text-sm">
               <CheckCircle2
-                className="w-5 h-5 text-[#15803D] shrink-0"
+                className="w-4 h-4 text-[#11694A] shrink-0"
                 aria-hidden="true"
               />
               <span>{t.safestSummary(routes.safest.totalTimeMin)}</span>
@@ -984,16 +984,16 @@ export const SafeRoutePage: React.FC = () => {
 
           {/* Avoided Flooded Street Warning Card */}
           {routes.shortest.worstSegment && (
-            <div className="p-5 rounded-[20px] bg-red-50/90 border-2 border-[#EF4444] flex items-start gap-3">
+            <div className="p-5 rounded-[20px] bg-[#FFDDE8] border-2 border-[#E5484D] flex items-start gap-3">
               <ShieldAlert
-                className="w-6 h-6 text-[#B91C1C] shrink-0 mt-1"
+                className="w-5 h-5 text-[#8B1A1E] shrink-0 mt-1"
                 aria-hidden="true"
               />
               <div>
-                <p className="text-lg font-extrabold text-[#B91C1C] leading-snug">
+                <p className="text-base font-extrabold text-[#8B1A1E] leading-snug">
                   {t.worstSpotLabel}: {routes.shortest.worstSegment.streetName[lang]}
                 </p>
-                <p className="text-base text-slate-800 font-semibold mt-1">
+                <p className="text-sm text-[#2B2A4C] font-semibold mt-1">
                   {routes.shortest.worstSegment.reason[lang]}
                 </p>
               </div>
@@ -1004,21 +1004,28 @@ export const SafeRoutePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {routes.safest.steps.map((step, idx) => {
               const grade = getRiskGradeInfo(step.floodRisk);
+              const cardBg =
+                idx % 3 === 0
+                  ? 'bg-[#DCEBFF] border-[#BACFFF]'
+                  : idx % 3 === 1
+                  ? 'bg-[#E8DEFF] border-[#D5C2FF]'
+                  : 'bg-[#D8F5E6] border-[#B4E8CC]';
+
               return (
                 <div
                   key={step.edgeId}
-                  className="p-6 rounded-[20px] bg-[#F5F9FF] border-2 border-blue-100 flex flex-col justify-between gap-4"
+                  className={`p-6 rounded-[20px] border-2 flex flex-col justify-between gap-4 ${cardBg}`}
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="w-10 h-10 rounded-full bg-[#1D4ED8] text-white font-extrabold text-xl flex items-center justify-center">
+                      <span className="w-9 h-9 rounded-full bg-[#F2677A] text-white font-extrabold text-base flex items-center justify-center">
                         {idx + 1}
                       </span>
                       <span
-                        className="px-2.5 py-0.5 rounded-full text-sm font-extrabold"
+                        className="px-2.5 py-0.5 rounded-full text-xs font-extrabold"
                         style={{
                           backgroundColor: `${grade.color}20`,
-                          color: grade.color === '#FACC15' ? '#854D0E' : grade.color,
+                          color: grade.color === '#FACC15' ? '#7A4F01' : grade.color === '#22C55E' ? '#11694A' : grade.color,
                           border: `1.5px solid ${grade.color}`,
                         }}
                       >
@@ -1026,16 +1033,16 @@ export const SafeRoutePage: React.FC = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-extrabold text-slate-900">
+                    <h3 className="text-base sm:text-lg font-extrabold text-[#2B2A4C]">
                       {step.streetName[lang]}
                     </h3>
 
-                    <p className="text-xl font-semibold text-slate-800 leading-relaxed">
+                    <p className="text-base font-semibold text-[#2B2A4C] leading-relaxed">
                       {step.instruction[lang]}
                     </p>
                   </div>
 
-                  <div className="text-sm font-extrabold text-slate-500 pt-2 border-t border-blue-100">
+                  <div className="text-xs font-extrabold text-[#6B6A8A] pt-2 border-t border-[#2B2A4C]/10">
                     {t.stepMinKm(step.travelTimeMin, step.distanceKm)}
                   </div>
                 </div>

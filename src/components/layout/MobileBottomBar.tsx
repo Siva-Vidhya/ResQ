@@ -69,7 +69,7 @@ export const MobileBottomBar: React.FC = () => {
   return (
     <nav
       aria-label="Mobile bottom navigation"
-      className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-blue-100 shadow-lg px-1.5 py-1.5"
+      className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#2B2A4C]/10 shadow-lg px-1.5 py-1.5"
     >
       <div className="grid grid-cols-4 gap-1 max-w-lg mx-auto">
         {items.map((item) => {
@@ -82,12 +82,12 @@ export const MobileBottomBar: React.FC = () => {
               aria-current={isActive ? 'page' : undefined}
               className={`flex flex-col items-center justify-center py-2 px-1 rounded-[14px] transition-all cursor-pointer ${
                 isActive
-                  ? 'bg-[#1D4ED8] bg-gradient-to-r from-[#1D4ED8] to-[#0284C7] text-white font-extrabold shadow-sm'
-                  : 'text-slate-800 hover:bg-blue-50 font-bold'
+                  ? 'bg-[#E8DEFF] text-[#2B2A4C] font-extrabold shadow-xs border border-[#D5C2FF]'
+                  : 'text-[#2B2A4C] hover:bg-[#E8DEFF]/30 font-bold'
               }`}
             >
               {item.icon}
-              <span className="text-base mt-1 leading-tight text-center break-words">
+              <span className="text-[13px] mt-0.5 leading-tight text-center break-words">
                 {item.label}
               </span>
             </button>

@@ -131,8 +131,8 @@ export const RainCanvas: React.FC = () => {
     let curWindAngle = targetWindAngle;
     let curOpacity = targetOpacity;
 
-    // Palette: soft blue (#3B82F6 to #60A5FA)
-    const rainColors = ['#3B82F6', '#60A5FA', '#93C5FD'];
+    // Palette: soft periwinkle #8FA8FF
+    const rainColors = ['#8FA8FF', '#9FB6FF', '#B3C4FF'];
 
     const createDrop = (): RainDrop => ({
       x: Math.random() * (width + 200) - 100,
@@ -270,7 +270,7 @@ export const RainCanvas: React.FC = () => {
 
       // If user prefers reduced motion, draw very light static mist and exit
       if (prefersReducedMotion) {
-        ctx.fillStyle = 'rgba(96, 165, 250, 0.05)';
+        ctx.fillStyle = 'rgba(143, 168, 255, 0.05)';
         ctx.fillRect(0, 0, width, height);
         return;
       }
@@ -297,8 +297,8 @@ export const RainCanvas: React.FC = () => {
         if (m.y > height + m.radius) m.y = -m.radius;
 
         const grad = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.radius);
-        grad.addColorStop(0, `rgba(147, 197, 253, ${m.alpha * (curOpacity / 0.4)})`);
-        grad.addColorStop(1, 'rgba(147, 197, 253, 0)');
+        grad.addColorStop(0, `rgba(143, 168, 255, ${m.alpha * (curOpacity / 0.4)})`);
+        grad.addColorStop(1, 'rgba(143, 168, 255, 0)');
         ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.arc(m.x, m.y, m.radius, 0, Math.PI * 2);
@@ -374,7 +374,7 @@ export const RainCanvas: React.FC = () => {
 
         ctx.beginPath();
         ctx.ellipse(s.x, s.y, s.rx, s.rx * 0.32, 0, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(96, 165, 250, ${s.alpha * curOpacity})`;
+        ctx.strokeStyle = `rgba(143, 168, 255, ${s.alpha * curOpacity})`;
         ctx.lineWidth = 1.2;
         ctx.stroke();
       }
@@ -392,7 +392,7 @@ export const RainCanvas: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(59, 130, 246, ${r.alpha * 0.75})`;
+        ctx.strokeStyle = `rgba(143, 168, 255, ${r.alpha * 0.75})`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
       }
@@ -410,7 +410,7 @@ export const RainCanvas: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(cr.x, cr.y, cr.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(37, 99, 235, ${cr.alpha})`;
+        ctx.strokeStyle = `rgba(143, 168, 255, ${cr.alpha})`;
         ctx.lineWidth = 2.0;
         ctx.stroke();
 
@@ -418,7 +418,7 @@ export const RainCanvas: React.FC = () => {
         if (cr.radius > 12) {
           ctx.beginPath();
           ctx.arc(cr.x, cr.y, cr.radius * 0.65, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(14, 165, 233, ${cr.alpha * 0.6})`;
+          ctx.strokeStyle = `rgba(242, 103, 122, ${cr.alpha * 0.5})`;
           ctx.lineWidth = 1.2;
           ctx.stroke();
         }

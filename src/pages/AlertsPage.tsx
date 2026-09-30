@@ -261,27 +261,27 @@ export const AlertsPage: React.FC = () => {
       {/* TOP CARD: "Alert settings" with 3 big toggles */}
       <section
         aria-labelledby="alert-settings-heading"
-        className="resq-card p-6 sm:p-8 space-y-6"
+        className="resq-card p-6 sm:p-8 space-y-6 bg-white border-2 border-[#2B2A4C]/10"
       >
         <div className="space-y-1.5">
           <h1
             id="alert-settings-heading"
-            className="text-3xl sm:text-4xl font-extrabold text-slate-900"
+            className="text-2xl sm:text-[28px] font-extrabold text-[#2B2A4C]"
           >
             {t.settingsTitle}
           </h1>
-          <p className="text-lg text-slate-700">{t.settingsSub}</p>
+          <p className="text-[15px] text-[#6B6A8A]">{t.settingsSub}</p>
         </div>
 
         {/* Friendly One-Time Notification Permission Card */}
         {!notificationCardDismissed && (
-          <div className="p-5 rounded-[20px] bg-blue-50 border-2 border-[#2563EB]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="p-5 rounded-[20px] bg-[#E8DEFF] border-2 border-[#D5C2FF] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <Bell
-                className="w-7 h-7 text-[#2563EB] shrink-0"
+                className="w-6 h-6 text-[#F2677A] shrink-0"
                 aria-hidden="true"
               />
-              <p className="text-lg font-extrabold text-slate-900">
+              <p className="text-base font-extrabold text-[#2B2A4C]">
                 {t.notifPromptTitle}
               </p>
             </div>
@@ -289,15 +289,15 @@ export const AlertsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleEnableNotificationsBanner}
-                className="btn-secondary inline-flex items-center gap-2 cursor-pointer"
+                className="btn-secondary inline-flex items-center gap-2 cursor-pointer text-[15px]"
               >
-                <Bell className="w-5 h-5 shrink-0" aria-hidden="true" />
+                <Bell className="w-4 h-4 shrink-0" aria-hidden="true" />
                 <span>{t.notifTurnOnBtn}</span>
               </button>
               <button
                 type="button"
                 onClick={dismissNotificationCard}
-                className="text-base font-bold text-slate-700 hover:text-slate-900 px-3 py-2 cursor-pointer"
+                className="text-sm font-bold text-[#6B6A8A] hover:text-[#2B2A4C] px-3 py-2 cursor-pointer"
               >
                 {t.notifDismissBtn}
               </button>
@@ -305,27 +305,30 @@ export const AlertsPage: React.FC = () => {
           </div>
         )}
 
-        {/* 3 Big Toggles (Max 3 cards per row) */}
+        {/* 3 Big Toggles (Max 3 cards per row) - Rotated Soft Pastels */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {settingsItems.map((item) => {
+          {settingsItems.map((item, idx) => {
             const Icon = item.icon;
+            const pastelCardBg =
+              idx === 0
+                ? 'bg-[#DCEBFF] border-[#BACFFF]'
+                : idx === 1
+                ? 'bg-[#E8DEFF] border-[#D5C2FF]'
+                : 'bg-[#D8F5E6] border-[#B4E8CC]';
+
             return (
               <div
                 key={item.id}
-                className={`p-5 rounded-[20px] border-2 flex flex-col justify-between gap-5 transition-all ${
-                  item.checked
-                    ? 'bg-[#F5F9FF] border-[#2563EB]/40'
-                    : 'bg-slate-50 border-slate-200'
-                }`}
+                className={`p-5 rounded-[20px] border-2 flex flex-col justify-between gap-5 transition-all ${pastelCardBg}`}
               >
                 <div className="space-y-2.5">
-                  <div className="w-12 h-12 rounded-[14px] bg-white border border-blue-100 flex items-center justify-center text-[#2563EB]">
+                  <div className="w-12 h-12 rounded-[14px] bg-white border border-[#2B2A4C]/10 flex items-center justify-center text-[#2B2A4C]">
                     <Icon className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h2 className="text-xl font-extrabold text-slate-900 leading-snug">
+                  <h2 className="text-lg font-extrabold text-[#2B2A4C] leading-snug">
                     {item.title}
                   </h2>
-                  <p className="text-base font-semibold text-slate-700 leading-relaxed">
+                  <p className="text-[15px] font-semibold text-[#2B2A4C]/80 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -338,17 +341,17 @@ export const AlertsPage: React.FC = () => {
                   aria-checked={item.checked}
                   aria-label={item.title}
                   onClick={item.onToggle}
-                  className={`w-full px-4 py-3 rounded-[16px] border-2 flex items-center justify-between gap-3 font-extrabold text-lg transition-all cursor-pointer ${
+                  className={`w-full px-4 py-2.5 rounded-[16px] border-2 flex items-center justify-between gap-3 font-extrabold text-[15px] transition-all cursor-pointer ${
                     item.checked
-                      ? 'bg-[#1D4ED8] text-white border-[#1D4ED8] shadow-sm'
-                      : 'bg-white text-slate-800 border-slate-300 hover:border-[#2563EB]'
+                      ? 'bg-[#F2677A] text-white border-[#F2677A] shadow-xs'
+                      : 'bg-white text-[#2B2A4C] border-[#2B2A4C]/20 hover:border-[#F2677A]'
                   }`}
                 >
                   <span>{item.checked ? t.onLabel : t.offLabel}</span>
                   <span
                     aria-hidden="true"
-                    className={`w-12 h-7 rounded-full p-1 flex items-center transition-colors ${
-                      item.checked ? 'bg-white/25 justify-end' : 'bg-slate-200 justify-start'
+                    className={`w-11 h-6 rounded-full p-0.5 flex items-center transition-colors ${
+                      item.checked ? 'bg-white/30 justify-end' : 'bg-slate-200 justify-start'
                     }`}
                   >
                     <span
@@ -367,24 +370,24 @@ export const AlertsPage: React.FC = () => {
       {/* TIMELINE OF PAST AND CURRENT ALERTS */}
       <section
         aria-labelledby="alerts-timeline-heading"
-        className="resq-card p-6 sm:p-8 space-y-6"
+        className="resq-card p-6 sm:p-8 space-y-6 bg-white border-2 border-[#2B2A4C]/10"
       >
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
             <h2
               id="alerts-timeline-heading"
-              className="text-2xl sm:text-3xl font-extrabold text-slate-900"
+              className="text-xl sm:text-2xl font-extrabold text-[#2B2A4C]"
             >
               {t.timelineTitle}
             </h2>
-            <p className="text-lg text-slate-700">{t.timelineSub}</p>
+            <p className="text-[15px] text-[#6B6A8A]">{t.timelineSub}</p>
           </div>
 
           {triggeredAlerts.length > 0 && (
             <button
               type="button"
               onClick={clearTriggeredAlerts}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-[14px] bg-[#F5F9FF] hover:bg-blue-50 border border-blue-200 text-base font-bold text-slate-700 cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[14px] bg-[#FFF9F4] hover:bg-[#E8DEFF] border border-[#2B2A4C]/15 text-sm font-bold text-[#2B2A4C] cursor-pointer"
             >
               <Trash2 className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>{t.clearHistoryBtn}</span>
@@ -402,39 +405,39 @@ export const AlertsPage: React.FC = () => {
             {[1, 2, 3].map((n) => (
               <div
                 key={n}
-                className="p-6 rounded-[20px] bg-[#F5F9FF] border border-blue-100 animate-pulse space-y-3"
+                className="p-5 rounded-[20px] bg-[#FFF9F4] border border-[#2B2A4C]/10 animate-pulse space-y-3"
               >
-                <div className="h-7 w-44 bg-blue-100 rounded-full" />
-                <div className="h-6 w-3/4 bg-blue-100 rounded-lg" />
+                <div className="h-6 w-44 bg-[#E8DEFF]/60 rounded-full" />
+                <div className="h-5 w-3/4 bg-[#E8DEFF]/40 rounded-lg" />
               </div>
             ))}
           </div>
         ) : triggeredAlerts.length === 0 ? (
           /* Friendly Empty State */
-          <div className="p-8 rounded-[20px] bg-[#F5F9FF] border-2 border-dashed border-blue-200 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-[#22C55E] text-[#15803D] flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
+          <div className="p-8 rounded-[20px] bg-[#FFF9F4] border-2 border-dashed border-[#2B2A4C]/20 text-center space-y-4">
+            <div className="w-14 h-14 rounded-full bg-[#D8F5E6] border-2 border-[#34C38F] text-[#11694A] flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-7 h-7" aria-hidden="true" />
             </div>
             <div className="space-y-1 max-w-lg mx-auto">
-              <h3 className="text-2xl font-extrabold text-slate-900">
+              <h3 className="text-xl font-extrabold text-[#2B2A4C]">
                 {t.emptyTitle}
               </h3>
-              <p className="text-lg text-slate-700">{t.emptySub}</p>
+              <p className="text-[15px] text-[#6B6A8A]">{t.emptySub}</p>
             </div>
             <div>
               <button
                 type="button"
                 onClick={restoreSampleAlerts}
-                className="btn-main inline-flex items-center gap-2.5 cursor-pointer"
+                className="btn-main inline-flex items-center gap-2.5 cursor-pointer text-[15px]"
               >
-                <RotateCcw className="w-5 h-5 shrink-0" aria-hidden="true" />
+                <RotateCcw className="w-4 h-4 shrink-0" aria-hidden="true" />
                 <span>{t.restoreAlertsBtn}</span>
               </button>
             </div>
           </div>
         ) : (
           /* Simple Vertical Timeline of Past & Current Alerts */
-          <ol className="relative border-l-4 border-blue-200 ml-3 sm:ml-5 pl-5 sm:pl-7 space-y-6">
+          <ol className="relative border-l-4 border-[#E8DEFF] ml-3 sm:ml-5 pl-5 sm:pl-7 space-y-6">
             {triggeredAlerts.map((alert, idx) => {
               const displayTime = alert.timeLabel
                 ? alert.timeLabel[lang]
@@ -442,10 +445,17 @@ export const AlertsPage: React.FC = () => {
 
               const dotColor =
                 alert.severity === 'DANGER'
-                  ? 'bg-[#EF4444] border-red-100'
+                  ? 'bg-[#E5484D] border-[#FFDDE8]'
                   : alert.severity === 'PRONE'
-                  ? 'bg-[#F59E0B] border-amber-100'
-                  : 'bg-[#22C55E] border-emerald-100';
+                  ? 'bg-[#F59A4A] border-[#FFE3D3]'
+                  : 'bg-[#34C38F] border-[#D8F5E6]';
+
+              const itemBg =
+                idx % 3 === 0
+                  ? 'bg-[#FFE3D3] border-[#F7CBB6]'
+                  : idx % 3 === 1
+                  ? 'bg-[#FFDDE8] border-[#F5C5D4]'
+                  : 'bg-[#DCEBFF] border-[#BACFFF]';
 
               return (
                 <li key={alert.id} className="relative">
@@ -455,7 +465,7 @@ export const AlertsPage: React.FC = () => {
                     className={`w-5 h-5 rounded-full border-4 ${dotColor} absolute -left-[32px] sm:-left-[40px] top-6`}
                   />
 
-                  <div className="p-5 sm:p-6 rounded-[20px] bg-[#F5F9FF] border-2 border-blue-100 flex flex-col lg:flex-row lg:items-center justify-between gap-5 transition-all">
+                  <div className={`p-5 sm:p-6 rounded-[20px] border-2 flex flex-col lg:flex-row lg:items-center justify-between gap-5 transition-all ${itemBg}`}>
                     <div className="space-y-2.5 flex-1">
                       {/* 1. Coloured Icon + Word Severity & 2. Time */}
                       <div className="flex flex-wrap items-center gap-3">
@@ -464,9 +474,9 @@ export const AlertsPage: React.FC = () => {
                           t.riskWords[alert.severity]
                         )}
 
-                        <span className="inline-flex items-center gap-1.5 text-base font-bold text-slate-700">
+                        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#6B6A8A]">
                           <Clock
-                            className="w-4 h-4 text-[#1D4ED8] shrink-0"
+                            className="w-4 h-4 text-[#6B6A8A] shrink-0"
                             aria-hidden="true"
                           />
                           <span>{displayTime}</span>
@@ -474,7 +484,7 @@ export const AlertsPage: React.FC = () => {
                       </div>
 
                       {/* 3. One-Line Plain Message */}
-                      <p className="text-xl font-bold text-slate-900 leading-snug">
+                      <p className="text-base sm:text-lg font-bold text-[#2B2A4C] leading-snug">
                         {alert.message[lang]}
                       </p>
                     </div>
@@ -486,10 +496,10 @@ export const AlertsPage: React.FC = () => {
                         onClick={() => setActiveTab('route')}
                         className={`${
                           idx === 0 ? 'btn-main' : 'btn-secondary'
-                        } w-full sm:w-auto inline-flex items-center justify-center gap-2 cursor-pointer`}
+                        } w-full sm:w-auto inline-flex items-center justify-center gap-2 cursor-pointer text-[15px]`}
                       >
                         <Navigation
-                          className="w-5 h-5 shrink-0"
+                          className="w-4 h-4 shrink-0"
                           aria-hidden="true"
                         />
                         <span>{t.seeSafeRouteBtn}</span>

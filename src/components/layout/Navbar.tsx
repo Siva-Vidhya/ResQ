@@ -71,7 +71,7 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-blue-100 shadow-sm">
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-[#2B2A4C]/10 shadow-xs">
       <div className="max-w-7xl mx-auto px-3 sm:px-8 min-h-[76px] py-2.5 flex flex-wrap items-center justify-between gap-2.5">
         {/* 1. Brand Logo */}
         <button
@@ -80,14 +80,14 @@ export const Navbar: React.FC = () => {
           aria-label="ResQ Grid Home"
           className="flex items-center gap-2.5 text-left cursor-pointer shrink-0"
         >
-          <div className="w-11 h-11 rounded-[14px] bg-[#1D4ED8] bg-gradient-to-br from-[#2563EB] via-[#0EA5E9] to-[#14B8A6] flex items-center justify-center text-white shadow-md shrink-0">
+          <div className="w-11 h-11 rounded-[14px] bg-[#F2677A] bg-gradient-to-br from-[#F2677A] to-[#E8DEFF] flex items-center justify-center text-white shadow-xs shrink-0">
             <Droplets className="w-6 h-6" aria-hidden="true" />
           </div>
           <div>
-            <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 block leading-none">
+            <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-[#2B2A4C] block leading-none">
               ResQ Grid
             </span>
-            <span className="text-base font-bold text-[#1D4ED8] hidden sm:block mt-0.5">
+            <span className="text-sm font-bold text-[#6B6A8A] hidden sm:block mt-0.5">
               {labels.subtitle}
             </span>
           </div>
@@ -96,7 +96,7 @@ export const Navbar: React.FC = () => {
         {/* 2. Desktop 4 Navigation Links */}
         <nav
           aria-label="Main navigation"
-          className="hidden lg:flex items-center gap-2 bg-[#F5F9FF] p-1.5 rounded-[20px] border border-blue-100"
+          className="hidden lg:flex items-center gap-2 bg-[#FFF9F4] p-1.5 rounded-[20px] border border-[#2B2A4C]/10"
         >
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
@@ -106,10 +106,10 @@ export const Navbar: React.FC = () => {
                 type="button"
                 onClick={() => setActiveTab(item.id)}
                 aria-current={isActive ? 'page' : undefined}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-[16px] text-lg font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-[16px] text-[15px] font-bold transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#1D4ED8] bg-gradient-to-r from-[#1D4ED8] via-[#0284C7] to-[#0F766E] text-white shadow-md'
-                    : 'text-slate-800 hover:text-[#1D4ED8] hover:bg-white'
+                    ? 'bg-[#E8DEFF] text-[#2B2A4C] border border-[#D5C2FF] shadow-xs'
+                    : 'text-[#2B2A4C] hover:bg-white'
                 }`}
               >
                 {item.icon}
@@ -123,7 +123,7 @@ export const Navbar: React.FC = () => {
         <div
           role="group"
           aria-label="Select language"
-          className="flex items-center bg-[#F5F9FF] rounded-[18px] p-1 border border-blue-100"
+          className="flex items-center bg-[#FFF9F4] rounded-[18px] p-1 border border-[#2B2A4C]/10"
         >
           {(
             [
@@ -139,10 +139,10 @@ export const Navbar: React.FC = () => {
                 type="button"
                 onClick={() => i18n.changeLanguage(lang.code)}
                 aria-pressed={active}
-                className={`px-2.5 sm:px-3.5 py-2 rounded-[14px] text-base font-extrabold transition-all cursor-pointer ${
+                className={`px-2.5 sm:px-3 py-1.5 rounded-[14px] text-sm font-extrabold transition-all cursor-pointer ${
                   active
-                    ? 'bg-[#1D4ED8] text-white shadow-sm'
-                    : 'text-slate-800 hover:text-[#1D4ED8] hover:bg-white'
+                    ? 'bg-[#F2677A] text-white shadow-xs'
+                    : 'text-[#2B2A4C] hover:bg-white'
                 }`}
               >
                 {lang.label}

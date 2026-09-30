@@ -9,6 +9,7 @@ import { Toast } from './Toast';
 import { Footer } from './Footer';
 import { RainCanvas } from './RainCanvas';
 import { PageWaterWipe } from './PageWaterWipe';
+import { BackgroundScene } from './BackgroundScene';
 
 interface GlobalLayoutProps {
   children: React.ReactNode;
@@ -33,7 +34,10 @@ export const GlobalLayout: React.FC<GlobalLayoutProps> = ({ children }) => {
   }, [setActiveTab]);
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden flex flex-col bg-[#F5F9FF] text-slate-900 font-sans relative">
+    <div className="min-h-screen w-full overflow-x-hidden flex flex-col bg-transparent text-[#2B2A4C] font-sans relative isolate">
+      {/* Decorative Layered Waves & Clouds Background (z-[-1], pointer-events-none, pure SVG) */}
+      <BackgroundScene />
+
       {/* Global Interactive Rain Canvas (z-20, pointer-events-none, scaled to risk & route) */}
       <RainCanvas />
 
